@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Davd96/graphql-go-todo/graphql/configs"
+	"github.com/Davd96/graphql-go-todo/configs"
 	"github.com/Davd96/graphql-go-todo/graphql/resolver"
 	graphql "github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
@@ -25,9 +25,9 @@ func main() {
 
 	}))
 
-	schema := schemaToString("./graphql/schema/ex.graphql")
+	schema := schemaToString("./graphql/schema/schema.graphql")
 
-	schemaParsed := graphql.MustParseSchema(schema, &resolver.Resolver{})
+	schemaParsed := graphql.MustParseSchema(schema, &resolver.QueryResolver{})
 
 	http.Handle("/query", &relay.Handler{Schema: schemaParsed})
 
