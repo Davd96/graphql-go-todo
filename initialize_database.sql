@@ -18,5 +18,5 @@ CREATE TABLE todo(
 
 INSERT INTO public.user ("name") VALUES ('tester');
 
-INSERT INTO public.todo ("description", "status", "user_id") VALUES ('First todo', false, 1);
+INSERT INTO public.todo ("description", "status", "user_id") VALUES ('First todo', 'PENDING', 1);
 
