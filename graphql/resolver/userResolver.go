@@ -3,12 +3,12 @@ package resolver
 import (
 	"strconv"
 
-	graphql "github.com/Davd96/graphql-go"
 	"github.com/Davd96/graphql-go-todo/models"
+	graphql "github.com/guzmanweb/graphql-go"
 )
 
 type userResolver struct {
-	user models.User
+	user models.UserResponse
 }
 
 func (r *userResolver) ID() graphql.ID {
