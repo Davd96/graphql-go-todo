@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"os"
 
+	graphql "github.com/Davd96/graphql-go"
 	"github.com/Davd96/graphql-go-todo/configs"
 	"github.com/Davd96/graphql-go-todo/graphql/resolver"
-	graphql "github.com/graph-gophers/graphql-go"
-	"github.com/graph-gophers/graphql-go/relay"
+	"github.com/Davd96/graphql-go/relay"
 )
 
 func main() {
@@ -19,15 +19,19 @@ func main() {
 		panic(fmt.Sprintf("environment variable not found (%s)", configs.ENVIROMENT_VARIABLE_PSQL))
 	}
 
+	var schema string = schemaToString("./graphql/schema/schema.graphql")
+
+	schemaParsed, err := graphql.ParseSchema(schema, &resolver.QueryResolver{}, &resolver.MutationResolver{})
+
+	if err != nil {
+		panic(err)
+	}
+
 	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		http.ServeFile(w, r, "web/graphql.html")
 
 	}))
-
-	schema := schemaToString("./graphql/schema/schema.graphql")
-
-	schemaParsed := graphql.MustParseSchema(schema, &resolver.QueryResolver{})
 
 	http.Handle("/query", &relay.Handler{Schema: schemaParsed})
 
