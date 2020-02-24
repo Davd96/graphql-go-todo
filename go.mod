@@ -3,8 +3,9 @@ module github.com/Davd96/graphql-go-todo
 go 1.13
 
 require (
-	github.com/OscarYuen/go-graphql-starter v0.0.0-20181008092935-c7ec203c045c
-	github.com/graph-gophers/graphql-go v0.0.0-20200207002730-8334863f2c8b
+	github.com/OscarYuen/go-graphql-starter v0.0.0-20181008092935-c7ec203c045c // indirect
+	github.com/graph-gophers/graphql-go v0.0.0-20200207002730-8334863f2c8b // indirect
+	github.com/guzmanweb/graphql-go v1.0.0
 	github.com/hashicorp/consul v1.7.0 // indirect
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/lib/pq v1.3.0
