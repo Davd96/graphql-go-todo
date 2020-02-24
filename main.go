@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"os"
 
-	graphql "github.com/Davd96/graphql-go"
 	"github.com/Davd96/graphql-go-todo/configs"
 	"github.com/Davd96/graphql-go-todo/graphql/resolver"
-	"github.com/Davd96/graphql-go/relay"
+	graphql "github.com/guzmanweb/graphql-go"
+	"github.com/guzmanweb/graphql-go/relay"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 		panic(fmt.Sprintf("environment variable not found (%s)", configs.ENVIROMENT_VARIABLE_PSQL))
 	}
 
-	var schema string = schemaToString("./graphql/schema/schema.graphql")
+	var schema string = schemaToString(configs.SCHEMA_PATH)
 
 	schemaParsed, err := graphql.ParseSchema(schema, &resolver.QueryResolver{}, &resolver.MutationResolver{})
 
