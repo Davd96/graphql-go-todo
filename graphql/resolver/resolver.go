@@ -1,6 +1,8 @@
 package resolver
 
-import "github.com/Davd96/graphql-go-todo/models"
+import (
+	"github.com/Davd96/graphql-go-todo/services"
+)
 
-var todoService = models.TodoService{}
-var userService = models.UserService{}
+var todoService = services.TodoService{}
+var userService = services.UserService{}
