@@ -41,7 +41,7 @@ func (c UserService) Save(user models.CreateUser) *models.UserResponse {
 
 func (c UserService) Update(user models.UpdateUser) *models.UserResponse {
 	var updatedUser models.UserResponse
-	query := fmt.Sprintf("UPDATE public.user SET %s WHERE id = %v returning id, name", makeUpdateQuery(user), user.Input.ID)
+	query := fmt.Sprintf("UPDATE public.user SET %s WHERE id = %v returning id, name", makeUpdateQuery(user.Input), user.Input.ID)
 	err := GetConnection().QueryRow(query).Scan(&updatedUser.ID, &updatedUser.Name)
 
 	if err != nil {
