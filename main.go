@@ -35,7 +35,9 @@ func main() {
 
 	http.Handle("/query", &relay.Handler{Schema: schemaParsed})
 
+	log.Printf("Listening for requests on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", nil))
+
 }
 
 func schemaToString(schemaPath string) string {
